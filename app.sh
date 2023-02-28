@@ -1,6 +1,6 @@
 ### NCURSES ###
 _build_ncurses() {
-local VERSION="6.0"
+local VERSION="6.3"
 local FOLDER="ncurses-${VERSION}"
 local FILE="${FOLDER}.tar.gz"
 local URL="http://ftp.gnu.org/gnu/ncurses/${FILE}"
