@@ -1,12 +1,12 @@
 ### NCURSES ###
-#_build_ncurses() {
-#local VERSION="6.4"
-#local FOLDER="ncurses-${VERSION}"
-#local FILE="${FOLDER}.tar.gz"
-#local URL="http://ftp.gnu.org/gnu/ncurses/${FILE}"
+_build_ncurses() {
+local VERSION="6.4"
+local FOLDER="ncurses-${VERSION}"
+local FILE="${FOLDER}.tar.gz"
+local URL="http://ftp.gnu.org/gnu/ncurses/${FILE}"
 
-#_download_tgz "${FILE}" "${URL}" "${FOLDER}"
-#pushd target/"${FOLDER}"
+_download_tgz "${FILE}" "${URL}" "${FOLDER}"
+pushd target/"${FOLDER}"
 
 # htop's configure script explicitly looks for libtinfo, which, it seems, is
 # now included as part of libncurses(w) by default. in lieu of fixing what
@@ -22,14 +22,14 @@
 # arg and just symlink libtinfo to libncursesw. however, building the separate
 # library feels (slightly) more appropriate.
 #
-#./configure --host="${HOST}" --prefix="${DEPS}" \
-#  --libdir="${DEST}/lib" --datadir="${DEST}/share" \
-#  --with-shared --enable-rpath --enable-widec --with-termlib=tinfo
-#make
-#make install
-#rm -v "${DEST}/lib"/*.a
-#popd
-#}
+./configure --host="${HOST}" --prefix="${DEPS}" \
+  --libdir="${DEST}/lib" --datadir="${DEST}/share" \
+  --with-shared --enable-rpath --enable-widec --with-termlib=tinfo
+make
+make install
+rm -v "${DEST}/lib"/*.a
+popd
+}
 
 ### HTOP ###
 _build_htop() {
@@ -42,7 +42,7 @@ _download_xz "${FILE}" "${URL}" "${FOLDER}"
 pushd target/"${FOLDER}"
 ./configure --host="${HOST}" --prefix="${DEST}" \
   --mandir="${DEST}/man" \
-  --disable-unicode \
+  --enable-unicode \
   ac_cv_func_malloc_0_nonnull=yes \
   ac_cv_func_realloc_0_nonnull=yes \
   ac_cv_file__proc_stat=yes \
@@ -53,7 +53,7 @@ popd
 }
 
 _build() {
-#  _build_ncurses
+  _build_ncurses
   _build_htop
   _package
 }
