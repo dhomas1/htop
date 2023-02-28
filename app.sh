@@ -1,6 +1,6 @@
 ### NCURSES ###
 _build_ncurses() {
-local VERSION="5.9"
+local VERSION="6.4"
 local FOLDER="ncurses-${VERSION}"
 local FILE="${FOLDER}.tar.gz"
 local URL="http://ftp.gnu.org/gnu/ncurses/${FILE}"
@@ -33,12 +33,12 @@ popd
 
 ### HTOP ###
 _build_htop() {
-local VERSION="2.0.1"
+local VERSION="3.2.2"
 local FOLDER="htop-${VERSION}"
-local FILE="${FOLDER}.tar.gz"
-local URL="http://hisham.hm/htop/releases/${VERSION}/${FILE}"
+local FILE="${FOLDER}.tar.xz"
+local URL="https://github.com/htop-dev/htop/releases/download/${VERSION}/${FILE}"
 
-_download_tgz "${FILE}" "${URL}" "${FOLDER}"
+_download_xz "${FILE}" "${URL}" "${FOLDER}"
 pushd target/"${FOLDER}"
 ./configure --host="${HOST}" --prefix="${DEST}" \
   --mandir="${DEST}/man" \
