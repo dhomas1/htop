@@ -34,8 +34,8 @@ export CXXFLAGS="${CXXFLAGS:-} ${CFLAGS}"
 export CPPFLAGS="-I${DEPS}/include -DNDEBUG"
 export LDFLAGS="${LDFLAGS:-} -Wl,-rpath,${DEST}/lib -L${DEST}/lib -Wl,--gc-sections -Wl,--as-needed"
 
-# Reduce parallel jobs for memory-constrained systems
-MAKE_JOBS="${MAKE_JOBS:-2}"
+# Reduce parallel jobs for memory-constrained systems and cross-compilation stability
+MAKE_JOBS="${MAKE_JOBS:-1}"  # Single job by default for stability
 alias make="make -j${MAKE_JOBS}"
 
 ### optimized support functions ###
