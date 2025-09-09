@@ -194,7 +194,7 @@ _check_resources() {
 }
 
 ### application-specific functions ###
-. app_htop.sh
+. app.sh
 
 # Show resource status before building
 _check_resources
