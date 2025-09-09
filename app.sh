@@ -34,7 +34,7 @@ popd
 
 ### HTOP ###
 _build_htop() {
-local VERSION="3.4.1"  # Updated to latest version with performance improvements
+local VERSION="3.4.1"  # Keep stable version that works well
 local FOLDER="htop-${VERSION}"
 local FILE="${FOLDER}.tar.xz"
 local URL="https://github.com/htop-dev/htop/releases/download/${VERSION}/${FILE}"
@@ -57,7 +57,7 @@ LDFLAGS="${LDFLAGS} -Wl,--gc-sections -Wl,--strip-all" \
   ac_cv_file__proc_stat=yes \
   ac_cv_file__proc_meminfo=yes
 
-make -j2
+make -j1  # Single job for stability
 make install-strip  # Use install-strip to automatically strip symbols
 # Remove man pages to save space
 rm -rf "${DEST}/man" 2>/dev/null || true
