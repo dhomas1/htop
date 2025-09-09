@@ -33,7 +33,7 @@ popd
 
 ### HTOP ###
 _build_htop() {
-local VERSION="3.2.2"
+local VERSION="3.4.1"
 local FOLDER="htop-${VERSION}"
 local FILE="${FOLDER}.tar.xz"
 local URL="https://github.com/htop-dev/htop/releases/download/${VERSION}/${FILE}"
