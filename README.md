@@ -29,7 +29,7 @@ Each invocation creates a log file with all the generated output.
 ## Sources
 
 * ncurses: https://www.gnu.org/software/ncurses/
-* htop: http://hisham.hm/htop/
+* htop: [http://hisham.hm/htop/](https://github.com/htop-dev/htop/)
 
 <sub>**Disclaimer**</sub>
 
