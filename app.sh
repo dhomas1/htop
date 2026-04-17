@@ -22,9 +22,19 @@ pushd target/"${FOLDER}"
 # arg and just symlink libtinfo to libncursesw. however, building the separate
 # library feels (slightly) more appropriate.
 #
+
 ./configure --host="${HOST}" --prefix="${DEPS}" \
-  --libdir="${DEST}/lib" --datadir="${DEST}/share" \
-  --with-shared --enable-rpath --enable-widec --with-termlib=tinfo
+            --libdir="${DEST}/lib" --datadir="${DEST}/share" \
+            --with-shared --enable-rpath --enable-widec --with-termlib=tinfo \
+            --with-build-cc=gcc \
+            --with-tic-path=/usr/bin/tic \
+            --with-shared \
+            --enable-widec \
+            --prefix=/mnt/DroboFS/Shares/DroboApps/htop \
+
+# ./configure --host="${HOST}" --prefix="${DEPS}" \
+#  --libdir="${DEST}/lib" --datadir="${DEST}/share" \
+#  --with-shared --enable-rpath --enable-widec --with-termlib=tinfo
 make
 make install
 rm -v "${DEST}/lib"/*.a
