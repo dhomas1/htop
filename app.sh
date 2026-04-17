@@ -1,6 +1,6 @@
 ### NCURSES ###
 _build_ncurses() {
-local VERSION="6.6"
+local VERSION="6.0"
 local FOLDER="ncurses-${VERSION}"
 local FILE="${FOLDER}.tar.gz"
 local URL="http://ftp.gnu.org/gnu/ncurses/${FILE}"
@@ -23,18 +23,9 @@ pushd target/"${FOLDER}"
 # library feels (slightly) more appropriate.
 #
 
-./configure --host="${HOST}" --prefix="${DEPS}" \
-            --libdir="${DEST}/lib" --datadir="${DEST}/share" \
-            --with-shared --enable-rpath --enable-widec --with-termlib=tinfo \
-            --with-build-cc=gcc \
-            --with-tic-path=/usr/bin/tic \
-            --with-shared \
-            --enable-widec \
-            --prefix=/mnt/DroboFS/Shares/DroboApps/htop \
-
-# ./configure --host="${HOST}" --prefix="${DEPS}" \
-#  --libdir="${DEST}/lib" --datadir="${DEST}/share" \
-#  --with-shared --enable-rpath --enable-widec --with-termlib=tinfo
+ ./configure --host="${HOST}" --prefix="${DEPS}" \
+  --libdir="${DEST}/lib" --datadir="${DEST}/share" \
+  --with-shared --enable-rpath --enable-widec --with-termlib=tinfo
 make
 make install
 rm -v "${DEST}/lib"/*.a
